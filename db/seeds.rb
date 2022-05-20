@@ -9,7 +9,7 @@ require 'faker'
 require 'json'
 require 'open-uri'
 
-movie_data = URI.open("https://tmdb.lewagon.com/movie/latest").read
+movie_data = URI.open("https://tmdb.lewagon.com//movie/top_rated").read
 movies = JSON.parse(movie_data)
 
 

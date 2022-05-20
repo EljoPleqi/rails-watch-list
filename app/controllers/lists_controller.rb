@@ -27,7 +27,7 @@ before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   def update
     @list.update(prms)
-    redirect_to task_path(@list)
+    redirect_to list_path(@list)
   end
 
   def destroy

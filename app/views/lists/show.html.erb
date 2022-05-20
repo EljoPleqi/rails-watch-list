@@ -1,3 +1,50 @@
 <h1><%= @list.name %></h1>
 
-<%= link_to "🔙 back to your lists", lists_path, class: "btn btn-light"%>
+
+<% if @list.movies.length > 0 %>
+    <div class="col-sm-12 d-flex">
+      <% @list.movies.each  do |movie| %>
+          <section class=" my-5" style="max-width: 23rem;">
+            <div class="card">
+              <div class="card-body d-flex flex-row">
+                <div>
+                  <h5 class="card-title font-weight-bold mb-2"><%=movie.title%></h5>
+                </div>
+              </div>
+              <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+                <img class="img-fluid" src=<%="https://image.tmdb.org/t/p/original/#{movie.poster_url}"%>
+                  alt="Card image cap" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <p class="card-text collapse" id="collapseContent">
+                <%=movie.overview%>
+                </p>
+                <div class="d-flex justify-content-between">
+                  <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse" href="#collapseContent"
+                    role="button" aria-expanded="false" aria-controls="collapseContent">Read more</a>
+                  <div>
+                    <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip"
+                      data-mdb-placement="top" title="Share this post"></i>
+                    <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top"
+                      title="I like it"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    <% end %>
+    </div>
+  </div>
+
+<% end %>
+
+<hr>
+<div class="d-flex mb-4">
+<%= link_to "🔙 back to your lists", lists_path, class: "btn btn-dark"%>
+<%= link_to "Create New Bookmark", new_list_bookmark_url(@list), class: "btn btn-success" %>
+<%= link_to "Delete List", lists_path,  method: :delete, class: "btn btn-danger"%>
+
+</div>
