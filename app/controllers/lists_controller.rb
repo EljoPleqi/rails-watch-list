@@ -42,6 +42,6 @@ before_action :find_list, only: [:show, :edit, :update, :destroy]
   end
 
   def prms
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end

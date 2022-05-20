@@ -1,11 +1,10 @@
 
-<div class="row"></div>
   <div class="col-sm-12 d-flex flex-wrap flex-gap-2">
     <% @lists.each  do |list| %>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src=<%=list.movies.size > 0 ? "https://image.tmdb.org/t/p/original/#{list.movies[0].poster_url}" : "https://images.unsplash.com/photo-1574267432553-4b4628081c31?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800"%> alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%=list.name%> </h5>
+    <%=cl_image_tag list.photo.key, crop: :fill %>
+    <div class="card-body">
+    <h5 class="card-title"><%=list.name%> </h5>
         <%= link_to "Learn more", list_path(list), class: 'btn btn-primary'%>
       </div>
     </div>
